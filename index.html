@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto Spare Parts</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Auto Spare Parts</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="cart-nav">
+          <a href="#" onclick="toggleCart()" class="cart-link">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-count" id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h2>High-Quality Automotive Spare Parts</h2>
+    <p>Your one-stop shop for durable and affordable car parts.</p>
+  </section>
+
+  <section id="products" class="products">
+    <h3>Featured Products</h3>
+    
+    <!-- Search and Filter Section -->
+    <div class="search-filter-section">
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+        <button class="search-btn" onclick="searchProducts()">🔍</button>
+      </div>
+      
+      <div class="filter-container">
+        <select id="category-filter" class="filter-select" onchange="filterProducts()">
+          <option value="">All Categories</option>
+          <option value="brake">Brake System</option>
+          <option value="engine">Engine Parts</option>
+          <option value="electrical">Electrical</option>
+          <option value="fluids">Fluids & Oils</option>
+          <option value="tires">Tires & Wheels</option>
+          <option value="battery">Battery & Power</option>
+        </select>
+        
+        <select id="price-filter" class="filter-select" onchange="filterProducts()">
+          <option value="">All Prices</option>
+          <option value="0-50">£0 - £50</option>
+          <option value="50-100">£50 - £100</option>
+          <option value="100-200">£100 - £200</option>
+          <option value="200+">£200+</option>
+        </select>
+        
+        <button class="clear-filters-btn" onclick="clearFilters()">Clear Filters</button>
+      </div>
+    </div>
+    
+    <div class="product-list">
+      <div class="product" data-product-id="1" data-price="125" data-category="brake" data-name="brake pads">
+        <img src="images/brake-pad.jpg" alt="Brake Pad">
+        <div class="product-info">
+          <h4>Brake Pads</h4>
+          <p class="product-description">Reliable brake pads for all vehicle types.</p>
+          <div class="product-details">
+            <span class="product-price">£125.00</span>
+            <span class="product-stock">In Stock</span>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart(1, 'Brake Pads', 125)">
+            <i class="cart-icon">🛒</i> Add to Cart
+          </button>
+        </div>
+      </div>
+      <div class="product" data-product-id="2" data-price="90" data-category="engine" data-name="oil filter">
+        <img src="images/oil-filter.jpg" alt="Oil Filter">
+        <div class="product-info">
+          <h4>Oil Filter</h4>
+          <p class="product-description">High-performance oil filters for engine protection.</p>
+          <div class="product-details">
+            <span class="product-price">£90.00</span>
+            <span class="product-stock">In Stock</span>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart(2, 'Oil Filter', 90)">
+            <i class="cart-icon">🛒</i> Add to Cart
+          </button>
+        </div>
+      </div>
+      <div class="product" data-product-id="3" data-price="85" data-category="electrical" data-name="spark plug">
+        <img src="images/spark-plug.jpg" alt="Spark Plug">
+        <div class="product-info">
+          <h4>Spark Plug</h4>
+          <p class="product-description">Premium spark plugs for better fuel efficiency.</p>
+          <div class="product-details">
+            <span class="product-price">£85.00</span>
+            <span class="product-stock">In Stock</span>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart(3, 'Spark Plug', 85)">
+            <i class="cart-icon">🛒</i> Add to Cart
+          </button>
+        </div>
+      </div>
+      
+      <!-- Additional Products -->
+      <div class="product" data-product-id="4" data-price="35" data-category="fluids" data-name="motor oil engine oil">
+        <img src="images/motor-oil.jpg" alt="Motor Oil">
+        <div class="product-info">
+          <h4>Motor Oil 5W-30</h4>
+          <p class="product-description">Premium synthetic motor oil for superior engine protection.</p>
+          <div class="product-details">
+            <span class="product-price">£35.00</span>
+            <span class="product-stock">In Stock</span>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart(4, 'Motor Oil 5W-30', 35)">
+            <i class="cart-icon">🛒</i> Add to Cart
+          </button>
+        </div>
+      </div>
+      
+      <div class="product" data-product-id="5" data-price="180" data-category="tires" data-name="tire wheel">
+        <img src="images/tire.jpg" alt="Car Tire">
+        <div class="product-info">
+          <h4>All-Season Tire</h4>
+          <p class="product-description">Durable all-season tire with excellent grip and longevity.</p>
+          <div class="product-details">
+            <span class="product-price">£180.00</span>
+            <span class="product-stock">In Stock</span>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart(5, 'All-Season Tire', 180)">
+            <i class="cart-icon">🛒</i> Add to Cart
+          </button>
+        </div>
+      </div>
+      
+      <div class="product" data-product-id="6" data-price="110" data-category="battery" data-name="car battery 12v">
+        <img src="images/battery.jpg" alt="Car Battery">
+        <div class="product-info">
+          <h4>12V Car Battery</h4>
+          <p class="product-description">Reliable 12V automotive battery with 600 CCA rating.</p>
+          <div class="product-details">
+            <span class="product-price">£110.00</span>
+            <span class="product-stock">In Stock</span>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart(6, '12V Car Battery', 110)">
+            <i class="cart-icon">🛒</i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h3>Contact Us</h3>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Shopping Cart Sidebar -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Shopping Cart</h3>
+      <button class="close-cart" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-content">
+      <div id="cart-items" class="cart-items">
+        <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <strong>Total: £<span id="cart-total">0.00</span></strong>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+  <footer>
+    <p>&copy; 2025 Auto Spare Parts. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
