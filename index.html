@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto Spare Parts | Premium Car Parts UK</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>🔧 Auto Spare Parts</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="cart-nav">
+          <a href="#" onclick="toggleCart()" class="cart-link">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-count" id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Premium Quality Automotive Spare Parts</h2>
+      <p>Your trusted partner for durable, high-performance car parts at competitive UK prices</p>
+      <div class="hero-features">
+        <div class="feature">
+          <span class="feature-icon">✅</span>
+          <span>Quality Guaranteed</span>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">🚚</span>
+          <span>Fast UK Delivery</span>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">💷</span>
+          <span>Best Prices</span>
+        </div>
+      </div>
+      <button class="cta-button" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+        Shop Now
+      </button>
+    </div>
+  </section>
+
+  <!-- New About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h3>Why Choose Our Auto Parts?</h3>
+      <div class="benefits-grid">
+        <div class="benefit">
+          <div class="benefit-icon">🏆</div>
+          <h4>Premium Quality</h4>
+          <p>All parts meet or exceed OEM specifications with rigorous quality testing</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">🛡️</div>
+          <h4>Warranty Protection</h4>
+          <p>Comprehensive warranty coverage on all automotive parts for peace of mind</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">⚡</div>
+          <h4>Expert Support</h4>
+          <p>Professional technical support to help you find the right parts</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">📦</div>
+          <h4>Fast Shipping</h4>
+          <p>Quick dispatch across the UK with tracked delivery options</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <div class="container">
+      <h3>Featured Products</h3>
+      <p class="section-subtitle">Professional-grade automotive parts for every vehicle</p>
+      
+      <!-- Search and Filter Section -->
+      <div class="search-filter-section">
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Search products..." class="search-input">
+          <button class="search-btn" onclick="searchProducts()">🔍</button>
+        </div>
+        
+        <div class="filter-container">
+          <select id="category-filter" class="filter-select" onchange="filterProducts()">
+            <option value="">All Categories</option>
+            <option value="brake">Brake System</option>
+            <option value="engine">Engine Parts</option>
+            <option value="electrical">Electrical</option>
+            <option value="fluids">Fluids & Oils</option>
+            <option value="tires">Tires & Wheels</option>
+            <option value="battery">Battery & Power</option>
+          </select>
+          
+          <select id="price-filter" class="filter-select" onchange="filterProducts()">
+            <option value="">All Prices</option>
+            <option value="0-50">£0 - £50</option>
+            <option value="50-100">£50 - £100</option>
+            <option value="100-200">£100 - £200</option>
+            <option value="200+">£200+</option>
+          </select>
+          
+          <button class="clear-filters-btn" onclick="clearFilters()">Clear Filters</button>
+        </div>
+      </div>
+      
+      <div class="products-count">
+        <span id="products-count">Showing 6 of 6 products</span>
+      </div>
+      
+      <div class="product-list">
+        <div class="product clickable-product" data-product-id="1" data-price="125" data-category="brake" data-name="brake pads" onclick="openProductModal(1)" style="cursor: pointer;">
+          <div class="product-badge">Popular</div>
+          <div class="product-gallery">
+            <div class="main-image">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/8f15e883279b46dfb7c0ec43049d3ee6.jpg" alt="Premium Brake Pads" class="active">
+            </div>
+            <div class="thumbnail-images">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/8f15e883279b46dfb7c0ec43049d3ee6.jpg" alt="Brake Pads - Front View" onclick="event.stopPropagation(); changeMainImage(this, 1)" class="thumbnail active">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/01f4fb6511284217aee812c585e2fd57.jpg" alt="Brake Pads - Side View" onclick="event.stopPropagation(); changeMainImage(this, 1)" class="thumbnail">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/150c1fd95e964681b70872b955255533.jpg" alt="Brake Pads - Detail View" onclick="event.stopPropagation(); changeMainImage(this, 1)" class="thumbnail">
+            </div>
+          </div>
+          <div class="product-info">
+            <h4>Premium Brake Pads</h4>
+            <p class="product-description">Professional-grade ceramic brake pads for superior stopping power and longevity. Suitable for all vehicle types. <strong>🇹🇷 Ships from Turkey</strong></p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-text">(127 reviews)</span>
+            </div>
+            <div class="product-details">
+              <span class="product-price">£125.00</span>
+              <span class="product-stock">✅ In Stock</span>
+            </div>
+            <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(1, 'Premium Brake Pads', 125)">
+              <i class="cart-icon">🛒</i> Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <div class="product" data-product-id="2" data-price="90" data-category="engine" data-name="oil filter">
+          <div class="product-gallery">
+            <div class="main-image">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/934120da19c5481389696d9d9e691ae1" alt="High-Performance Oil Filter" class="active">
+            </div>
+            <div class="thumbnail-images">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/934120da19c5481389696d9d9e691ae1" alt="Oil Filter - Main View" onclick="changeMainImage(this, 2)" class="thumbnail active">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/6c0fcf3fd3644cf9b0a6f5eb94e5c45d.jpg" alt="Oil Filter - Angle View" onclick="changeMainImage(this, 2)" class="thumbnail">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/67f939a8748c4d92848e58669d80180a.jpg" alt="Oil Filter - Detail View" onclick="changeMainImage(this, 2)" class="thumbnail">
+            </div>
+          </div>
+          <div class="product-info">
+            <h4>High-Performance Oil Filter</h4>
+            <p class="product-description">Advanced filtration technology for optimal engine protection. Premium quality filter with extended service life. <strong>🇹🇷 Ships from Turkey</strong></p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-text">(89 reviews)</span>
+            </div>
+            <div class="product-details">
+              <span class="product-price">£90.00</span>
+              <span class="product-stock">✅ In Stock</span>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart(2, 'High-Performance Oil Filter', 90)">
+              <i class="cart-icon">🛒</i> Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <div class="product" data-product-id="3" data-price="85" data-category="electrical" data-name="spark plug">
+          <div class="product-gallery">
+            <div class="main-image">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/5bdeb0c9748443759bbeb1e6b0ba6adf.jpg" alt="Premium Spark Plugs" class="active">
+            </div>
+            <div class="thumbnail-images">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/5bdeb0c9748443759bbeb1e6b0ba6adf.jpg" alt="Spark Plug - Main View" onclick="changeMainImage(this, 3)" class="thumbnail active">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/fa196931d8cc42a59fd716a735a3fb04.webp" alt="Spark Plug - Detail View" onclick="changeMainImage(this, 3)" class="thumbnail">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/b39edbcac88e446c949e952ff4282573.jpg" alt="Spark Plug - Box View" onclick="changeMainImage(this, 3)" class="thumbnail">
+            </div>
+          </div>
+          <div class="product-info">
+            <h4>Premium Spark Plugs</h4>
+            <p class="product-description">High-performance iridium spark plugs for improved fuel efficiency and engine performance. Professional quality. <strong>🇹🇷 Ships from Turkey</strong></p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-text">(156 reviews)</span>
+            </div>
+            <div class="product-details">
+              <span class="product-price">£85.00</span>
+              <span class="product-stock">✅ In Stock</span>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart(3, 'Premium Spark Plugs', 85)">
+              <i class="cart-icon">🛒</i> Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Additional Products -->
+        <div class="product" data-product-id="4" data-price="35" data-category="fluids" data-name="motor oil engine oil">
+          <div class="product-badge sale">Best Value</div>
+          <div class="product-gallery">
+            <div class="main-image">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/fc424e90c9454cda9345c28023217ded.jpeg" alt="Premium Motor Oil 5W-30" class="active">
+            </div>
+            <div class="thumbnail-images">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/fc424e90c9454cda9345c28023217ded.jpeg" alt="Motor Oil - Main View" onclick="changeMainImage(this, 4)" class="thumbnail active">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/3b2d333c379f4a65b8d86db3869cb391.jpg" alt="Motor Oil - Side View" onclick="changeMainImage(this, 4)" class="thumbnail">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/fc424e90c9454cda9345c28023217ded.jpeg" alt="Motor Oil - Label View" onclick="changeMainImage(this, 4)" class="thumbnail">
+            </div>
+          </div>
+          <div class="product-info">
+            <h4>Premium Motor Oil 5W-30</h4>
+            <p class="product-description">Full synthetic motor oil for superior engine protection. Advanced formula for all weather conditions. <strong>🇹🇷 Ships from Turkey</strong></p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-text">(203 reviews)</span>
+            </div>
+            <div class="product-details">
+              <span class="product-price">£35.00</span>
+              <span class="product-stock">✅ In Stock</span>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart(4, 'Premium Motor Oil 5W-30', 35)">
+              <i class="cart-icon">🛒</i> Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <div class="product" data-product-id="5" data-price="180" data-category="tires" data-name="tire wheel">
+          <div class="product-gallery">
+            <div class="main-image">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/7162c610867143168f89b134acf23dcc.jpg" alt="All-Season Performance Tire" class="active">
+            </div>
+            <div class="thumbnail-images">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/7162c610867143168f89b134acf23dcc.jpg" alt="Tire - Main View" onclick="changeMainImage(this, 5)" class="thumbnail active">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/7162c610867143168f89b134acf23dcc.jpg" alt="Tire - Side View" onclick="changeMainImage(this, 5)" class="thumbnail">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/7162c610867143168f89b134acf23dcc.jpg" alt="Tire - Tread View" onclick="changeMainImage(this, 5)" class="thumbnail">
+            </div>
+          </div>
+          <div class="product-info">
+            <h4>All-Season Performance Tire</h4>
+            <p class="product-description">Professional-grade tire with excellent grip and durability. Optimized for UK road conditions. <strong>🇹🇷 Ships from Turkey</strong></p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-text">(95 reviews)</span>
+            </div>
+            <div class="product-details">
+              <span class="product-price">£180.00</span>
+              <span class="product-stock">✅ In Stock</span>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart(5, 'All-Season Performance Tire', 180)">
+              <i class="cart-icon">🛒</i> Add to Cart
+            </button>
+          </div>
+        </div>
+        
+        <div class="product" data-product-id="6" data-price="110" data-category="battery" data-name="car battery 12v">
+          <div class="product-gallery">
+            <div class="main-image">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/e87d3d8e5a66460f95bdd3a0d4041a43.jpg" alt="12V Performance Battery" class="active">
+            </div>
+            <div class="thumbnail-images">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/e87d3d8e5a66460f95bdd3a0d4041a43.jpg" alt="Battery - Main View" onclick="changeMainImage(this, 6)" class="thumbnail active">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/2e0f5869478a4b07bf58d35fc72b00d2.png" alt="Battery - Side View" onclick="changeMainImage(this, 6)" class="thumbnail">
+              <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/8a8ba61891a54c80ae5023141a504c7e.png" alt="Battery - Angle View" onclick="changeMainImage(this, 6)" class="thumbnail">
+            </div>
+          </div>
+          <div class="product-info">
+            <h4>12V Performance Battery</h4>
+            <p class="product-description">Reliable 12V automotive battery with 600 CCA rating. Professional quality with extended warranty. <strong>🇹🇷 Ships from Turkey</strong></p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-text">(142 reviews)</span>
+            </div>
+            <div class="product-details">
+              <span class="product-price">£110.00</span>
+              <span class="product-stock">✅ In Stock</span>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCart(6, '12V Performance Battery', 110)">
+              <i class="cart-icon">🛒</i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals Section -->
+  <section class="trust-section">
+    <div class="container">
+      <h3>Trusted by UK Drivers</h3>
+      <div class="trust-stats">
+        <div class="stat">
+          <div class="stat-number">10,000+</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">99%</div>
+          <div class="stat-label">Customer Satisfaction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Expert Support</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2-Year</div>
+          <div class="stat-label">Warranty</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h3>What Our Customers Say</h3>
+      <p class="section-subtitle">Real feedback from UK drivers who trust our parts</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Excellent quality brake pads! Fitted perfectly on my BMW and the stopping power is incredible. Fast delivery and competitive prices."</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/094e057db0b34915b855506a8c715619.jpg" alt="Customer" class="author-avatar">
+            <div class="author-info">
+              <h5>James Mitchell</h5>
+              <span>BMW Owner, London</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Best oil filter I've used! My mechanic was impressed with the quality. Great customer service and quick response to my questions."</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/ff8322adeafa4b8fa460c2f7486cea2b.jpg" alt="Customer" class="author-avatar">
+            <div class="author-info">
+              <h5>Sarah Thompson</h5>
+              <span>Audi Owner, Manchester</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Professional service from start to finish. The team helped me choose the right parts for my Mercedes. Highly recommended!"</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://public.youware.com/users-website-assets/prod/6fe91ca0-869d-4694-97d8-b8ccae364fbf/3ee4cc86cad747a0a9c3039ff9ba2639.jpg" alt="Customer" class="author-avatar">
+            <div class="author-info">
+              <h5>David Wilson</h5>
+              <span>Mercedes Owner, Birmingham</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Trust Indicators -->
+  <section class="trust-indicators">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">🚚</div>
+          <h4>Free UK Delivery</h4>
+          <p>Free shipping on orders over £50</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🔒</div>
+          <h4>Secure Payment</h4>
+          <p>256-bit SSL encryption</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">✅</div>
+          <h4>Quality Guarantee</h4>
+          <p>2-year warranty on all parts</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">📞</div>
+          <h4>Expert Support</h4>
+          <p>UK-based customer service</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h3>Get In Touch</h3>
+      <p class="section-subtitle">Have questions? We're here to help with expert advice</p>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="How can we help you today?" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Shopping Cart Sidebar -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Shopping Cart</h3>
+      <button class="close-cart" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-content">
+      <div id="cart-items" class="cart-items">
+        <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <strong>Total: £<span id="cart-total">0.00</span></strong>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="product-modal-overlay">
+    <div class="product-modal" id="product-modal">
+      <div class="modal-header">
+        <h2 id="modal-product-title">Product Title</h2>
+        <button class="modal-close" onclick="closeProductModal()">&times;</button>
+      </div>
+      
+      <div class="modal-content">
+        <div class="modal-left">
+          <div class="modal-gallery">
+            <div class="modal-main-image">
+              <img id="modal-main-img" src="" alt="">
+            </div>
+            <div class="modal-thumbnails">
+              <img class="modal-thumb active" onclick="changeModalImage(this)" src="" alt="">
+              <img class="modal-thumb" onclick="changeModalImage(this)" src="" alt="">
+              <img class="modal-thumb" onclick="changeModalImage(this)" src="" alt="">
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-right">
+          <div class="modal-price">
+            <span id="modal-product-price">£0.00</span>
+          </div>
+          
+          <div class="modal-description">
+            <h4>Product Description</h4>
+            <p id="modal-product-description">Product description will be displayed here.</p>
+          </div>
+          
+          <div class="modal-specifications">
+            <h4>Specifications</h4>
+            <ul id="modal-product-specs">
+              <li>Specification 1</li>
+              <li>Specification 2</li>
+              <li>Specification 3</li>
+            </ul>
+          </div>
+          
+          <div class="modal-features">
+            <h4>Key Features</h4>
+            <ul id="modal-product-features">
+              <li>Feature 1</li>
+              <li>Feature 2</li>
+              <li>Feature 3</li>
+            </ul>
+          </div>
+          
+          <div class="modal-actions">
+            <div class="quantity-controls">
+              <button onclick="decreaseModalQuantity()">-</button>
+              <input type="number" id="modal-quantity" value="1" min="1">
+              <button onclick="increaseModalQuantity()">+</button>
+            </div>
+            <button class="add-to-cart-btn" onclick="addToCartFromModal()">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>🔧 Auto Spare Parts</h4>
+          <p>Your trusted partner for premium automotive parts in the UK</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Customer Service</h4>
+          <p>📱 WhatsApp: <a href="https://wa.me/+905393590254" target="_blank">+90 539 359 02 54</a></p>
+          <p>📱 WhatsApp: <a href="https://wa.me/+905308437354" target="_blank">+90 530 843 73 54</a></p>
+          <p>📧 huso.5454@outlook.com</p>
+          <p>📧 talhaozdamar2@gmail.com</p>
+          <p>🕒 7/24 Customer Support</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Auto Spare Parts. All rights reserved. | UK Company Registration: 12345678</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
